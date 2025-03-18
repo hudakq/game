@@ -40,7 +40,7 @@ class Interaction:
         self.game_state = "start" # variable which tracks what mode of game were in
 
     def update(self):
-        if self.game_state == "start":
+        if self.game_state == "play":
             # updates bird if game is active
             self.bird.update(self.keyboard)
             # updates pipes
@@ -85,18 +85,20 @@ class Interaction:
         self.score = 0
 
 def mouse_handler(position):
-    if self.background.start_button.is_clicked(position):
-        self.state = "play"
-    if self.background.restart_button.is_clicked(position):
-        self.state = "play"
-        self.restart_game()
+    global inter
+
+    if inter.background.start_button.is_clicked(position):
+        inter.game_state = "play"
+    if inter.background.restart_button.is_clicked(position):
+        inter.game_state = "play"
+        inter.restart_game()
 
 kbd = Keyboard()
 background = Background(BACKGROUND_URL, BACKGROUND_SPEED, BACKGROUND_WIDTH, BACKGROUND_HEIGHT, HEIGHT)
 bird = Bird(
     SHEET_URL, Vector(WIDTH / 2, HEIGHT / 2), SHEET_COLUMNS, SHEET_ROWS, SHEET_WIDTH, SHEET_HEIGHT, GROUND_LEVEL
 )
-
+global inter
 inter = Interaction(bird, kbd, background)
 
 frame = simplegui.create_frame("Flappy Chicken", WIDTH, HEIGHT)
