@@ -13,8 +13,8 @@ class Background:
         self.bg_height = bg_height
         self.height = height
         self.background_scroll = 0
-        self.start_button = Button(290,335,100,40,"Start")
-        self.restart_button = Button(290,335,100,40, "Restart")
+        self.start_button = Button(290,335,100,40)
+        self.restart_button = Button(290,335,100,40)
 
     def update(self):
         self.background_scroll = (self.background_scroll + self.speed) % self.bg_width
@@ -40,7 +40,8 @@ class Background:
                     (self.bg_width / 2, self.height / 2),
                     (self.bg_width, self.bg_height))
             self.start_button.draw(canvas)
-            canvas.draw_text("Flappy Chicken",(200,300),50,"Black")
+            canvas.draw_text("Start",(320, 360), 20,"Black")
+            canvas.draw_text("Flappy Chicken",(200,250),50,"Black")
         elif game_state == "over":
             canvas.draw_image(self.img,
                     (self.bg_width/ 2, self.bg_height / 2),
@@ -48,12 +49,10 @@ class Background:
                     (self.bg_width / 2, self.height / 2),
                     (self.bg_width, self.bg_height))
             self.restart_button.draw(canvas)
+            canvas.draw_text("Restart",(310, 360), 20,"Black")
+            canvas.draw_text("Game Over",(220,200),50,"Black")
         
 #the main idea in the class is that i will implement the background, 
 #with the background i will implement the buttons on it and the text
 #this keeps the background logic in one class and not merging it in 
 #the interaction class
-
-#i think keeping UI logic in here makes it complicated bc then idk how
-#would i access the button width/height ect.. in the interaction class to
-#know if the person has clicked on the button/ in that space or not
