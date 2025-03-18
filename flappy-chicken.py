@@ -69,7 +69,7 @@ class Interaction:
         # draws background
         if self.game_state == "play":
             self.background.update()
-        self.background.draw(canvas)
+        self.background.draw(canvas,self.game_state)
 
         # draws pipes
         if self.game_state == "play":
@@ -78,28 +78,18 @@ class Interaction:
             # score counter
             canvas.draw_text(f"Score: {self.score}", (20, 40), 30, "White")
 
-        # death message when game state is flipped
-        if not self.game_active:
-            canvas.draw_text("Game Over", (WIDTH / 2 - 100, HEIGHT / 2), 50, "Red")
-            canvas.draw_text("Press space to restart", (WIDTH / 2 - 120, HEIGHT / 2 + 50), 30, "White")
-
-            # if keyboard is pressed the game will restart
-            if self.keyboard.just_pressed:
-                self.restart_game()
-
-    def mouse_handler(position,self):
-        x,y = position
-        if 
-
-
     def restart_game(self):
         self.bird.pos = Vector(WIDTH / 2, HEIGHT / 2)
         self.bird.vel = Vector(0, 0)
         self.pipe_manager = PipeManager(WIDTH, HEIGHT, spawn_interval=90, speed=3)
         self.score = 0
-        self.game_state = "play"
-        #self.keyboard.just_pressed = False
 
+def mouse_handler(position):
+    if self.background.start_button.is_clicked(position):
+        self.state = "play"
+    if self.background.restart_button.is_clicked(position):
+        self.state = "play"
+        self.restart_game()
 
 kbd = Keyboard()
 background = Background(BACKGROUND_URL, BACKGROUND_SPEED, BACKGROUND_WIDTH, BACKGROUND_HEIGHT, HEIGHT)
