@@ -40,6 +40,7 @@ class Background:
                     (self.bg_width / 2, self.height / 2),
                     (self.bg_width, self.bg_height))
             self.start_button.draw(canvas)
+            canvas.draw_text("Flappy Chicken",(200,300),50,"Black")
         elif game_state == "over":
             canvas.draw_image(self.img,
                     (self.bg_width/ 2, self.bg_height / 2),

@@ -17,4 +17,6 @@ class Button:
         (self.button_x, self.button_y + self.button_height)], 2, "Black", "Yellow")
         canvas.draw_text(self.button_text,(self.button_x + 30, self.button_y + 25), 20,"Black")
     def is_clicked(self,pos):
-        self.button_x <= pos[0] <= self.button_x + self.button_width and self.button_y <= pos[1] <= self.button_y + self.button_height
+        if self.button_x <= pos[0] <= self.button_x + self.button_width and self.button_y <= pos[1] <= self.button_y + self.button_height:
+            return True
+        return False
