@@ -15,4 +15,4 @@ class Button:
         (self.button_x + self.button_width, self.button_y), 
         (self.button_x + self.button_width, self.button_y + self.button_height),
         (self.button_x, self.button_y + self.button_height)], 2, "Black", "Yellow")
-        canvas.draw_text(self.button_text,(self.button_x + 30, self.button_y + 25, 20,"Black"))
+        canvas.draw_text(self.button_text,(self.button_x + 30, self.button_y + 25), 20,"Black"))
