@@ -51,10 +51,12 @@ class Interaction:
             # if collision is detected then game state will change
             if self.pipe_manager.check_collisions(self.bird):
                 self.game_state = "over"
+                self.background.set_final_score(self.score)
 
             # if the bird hits the floor, game state will change
             if self.bird.pos.y >= GROUND_LEVEL:
                 self.game_state = "over"
+                self.background.set_final_score(self.score)
 
             # checks scoring when a bird passes a pipe. Score will increment
             self.score += self.pipe_manager.check_score(self.bird)
