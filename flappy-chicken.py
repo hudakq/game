@@ -78,7 +78,7 @@ class Interaction:
             self.pipe_manager.draw(canvas)
             self.bird.draw(canvas)
             # score counter
-            canvas.draw_text(f"Score: {self.score}", (20, 40), 30, "White")
+            canvas.draw_text(f"Score: {self.score}", (20, 40), 30, "Black")
 
     def restart_game(self):
         self.bird.pos = Vector(WIDTH / 2, HEIGHT / 2)
