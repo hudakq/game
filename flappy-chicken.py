@@ -40,18 +40,19 @@ class Interaction:
         self.game_state = "start" # variable which tracks what mode of game were in
 
     def update(self):
+        # if game is in "play"
         if self.game_state == "play":
-            # updates bird if game is active
+            # updates bird
             self.bird.update(self.keyboard)
             # updates pipes
             self.pipe_manager.update()
-
-            #i should come the two ifs below?, the line will get long?
 
             # if collision is detected then game state will change
             if self.pipe_manager.check_collisions(self.bird):
                 self.game_state = "over"
                 self.background.set_final_score(self.score)
+                #method to allow background class to access score to display
+
 
             # if the bird hits the floor, game state will change
             if self.bird.pos.y >= GROUND_LEVEL:
@@ -60,8 +61,6 @@ class Interaction:
 
             # checks scoring when a bird passes a pipe. Score will increment
             self.score += self.pipe_manager.check_score(self.bird)
-#for now im gonna draw the ui components in the draw method but i think they
-#might need to go elsewhere, do i need a class for them??
 
 
     def draw(self, canvas):
@@ -71,10 +70,11 @@ class Interaction:
         # draws background
         if self.game_state == "play":
             self.background.update()
+
         self.background.draw(canvas,self.game_state)
 
         # draws pipes
-        if self.game_state == "play":
+        if self.game_state == "play": #pipes/bird and score only drawn when game in play
             self.pipe_manager.draw(canvas)
             self.bird.draw(canvas)
             # score counter
@@ -86,6 +86,7 @@ class Interaction:
         self.pipe_manager = PipeManager(WIDTH, HEIGHT, spawn_interval=90, speed=3)
         self.score = 0
 
+#handles mouse button clicks
 def mouse_handler(position):
     global inter
 

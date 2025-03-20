@@ -58,8 +58,3 @@ class Background:
             canvas.draw_text("High Score",(250, 290), 25,"Black")
             score = str(self.final_score)
             canvas.draw_text(score,(380,250),25,"Black")
-        
-#the main idea in the class is that i will implement the background, 
-#with the background i will implement the buttons on it and the text
-#this keeps the background logic in one class and not merging it in 
-#the interaction class
