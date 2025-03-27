@@ -32,7 +32,6 @@ BACKGROUND_SPEED = 2
 #Sounds loading
 GAME_OVER_S = simplegui._load_local_sound('sounds//game-over.ogg')
 
-
 class Interaction:
     def __init__(self, bird, keyboard, background):
         self.bird = bird
@@ -53,7 +52,6 @@ class Interaction:
             # if collision is detected then game state will change
             if self.pipe_manager.check_collisions(self.bird):
                 GAME_OVER_S.play()
-                print("works")
                 self.game_state = "over"
                 self.background.set_final_score(self.score)
                 #method to allow background class to access score to display
